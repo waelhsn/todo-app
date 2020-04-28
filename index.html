@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/main.js" defer></script>
+    <link rel="icon" type="image/ico" href="src/Pen.png" />
+    <link rel="stylesheet" href="src/style.css">
+    <title>TODOs APP</title>
+</head>
+<body>
+    <h1 class="todoh1">todos</h1>
+    <section class="todobucket" id="input-section">
+            <div id="remarkAll">
+                <svg id="down-arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 1024 1024">
+                        <path
+                        d="M0 307.2c0-6.552 2.499-13.102 7.499-18.101 9.997-9.998 26.206-9.998 36.203 0l442.698 442.698 442.699-442.698c9.997-9.998 26.206-9.998 36.203 0s9.998 26.206 0 36.203l-460.8 460.8c-9.997 9.998-26.206 9.998-36.203 0l-460.8-460.8c-5-5-7.499-11.55-7.499-18.102z">
+                        </path>
+                        <path d="M9.914 11.086l-2.829 2.829 8.914 8.914
+                            8.914-8.914-2.828-2.828-6.086 6.086z"></path>
+                    </svg>
+            </div>
+            <form>
+                <input id="inputText" type="text" placeholder="What needs to be done?" autofocus required title="Please fill out some activites">
+            </form>
+        </section>
+        <section id="activity-section">
+            <div id="todoList" class="activity-styling">
+                <div class="checkbox-area">
+                    <label class="checkbox">
+                            <input type="checkbox" name="checkbox-input" id="checkbox-input" autofocus>
+                            <svg class="unchecked" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="21" height="21" viewBox="0 0 192 192"
+                                style=" fill:#000000;">
+                                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#adaaaa">
+                                <path
+                                
+
+
+                                d="M96,7.68c-48.7296,0 -88.32,39.5904 -88.32,88.32c0,48.7296 39.5904,88.32 88.32,88.32c48.7296,0 88.32,-39.5904 88.32,-88.32c0,-48.7296 -39.5904,-88.32 -88.32,-88.32zM96,11.52c46.70592,0 84.48,37.77408 84.48,84.48c0,46.70592 -37.77408,84.48 -84.48,84.48c-46.70592,0 -84.48,-37.77408 -84.48,-84.48c0,-46.70592 37.77408,-84.48 84.48,-84.48z">
+                                </path>
+                            </svg>
+                            <svg class="checked" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="21" height="21" viewBox="0 0 52 52">
+                                <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M26,50C12.767,50,2,39.233,2,26   S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z" data-original="#000000" class="active-path" data-old_color="#6EDBAF" fill="#8FE2C1"/>
+                                <path d="M38.252,15.336l-15.369,17.29l-9.259-7.407c-0.43-0.345-1.061-0.274-1.405,0.156c-0.345,0.432-0.275,1.061,0.156,1.406   l10,8C22.559,34.928,22.78,35,23,35c0.276,0,0.551-0.114,0.748-0.336l16-18c0.367-0.412,0.33-1.045-0.083-1.411   C39.251,14.885,38.62,14.922,38.252,15.336z" data-original="#000000" class="active-path" data-old_color="#6EDBAF" fill="#8FE2C1"/> </svg>
+                    </label>
+                </div>
+                <div class="activity-text-wrapper">
+                    <p class="activity-text"></p>
+                    <input class="editText" type="text" hidden>
+                    <svg class="removal-sign" version="1.1" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 512 512">
+                            <path
+                                d="M507.331
+                                411.33c-0.002-0.002-0.004-0.004-0.006-0.005l-155.322-155.325
+                                155.322-155.325c0.002-0.002 0.004-0.003
+                                0.006-0.005 1.672-1.673 2.881-3.627
+                                3.656-5.708 2.123-5.688
+                                0.912-12.341-3.662-16.915l-73.373-73.373c-4.574-4.573-11.225-5.783-16.914-3.66-2.080
+                                0.775-4.035 1.984-5.709 3.655 0 0.002-0.002
+                                0.003-0.004 0.005l-155.324
+                                155.326-155.324-155.325c-0.002-0.002-0.003-0.003-0.005-0.005-1.673-1.671-3.627-2.88-5.707-3.655-5.69-2.124-12.341-0.913-16.915
+                                3.66l-73.374 73.374c-4.574 4.574-5.784
+                                11.226-3.661 16.914 0.776 2.080 1.985 4.036
+                                3.656 5.708 0.002 0.001 0.003 0.003 0.005
+                                0.005l155.325 155.324-155.325 155.326c-0.001
+                                0.002-0.003 0.003-0.004 0.005-1.671
+                                1.673-2.88 3.627-3.657 5.707-2.124
+                                5.688-0.913 12.341 3.661 16.915l73.374
+                                73.373c4.575 4.574 11.226 5.784 16.915 3.661
+                                2.080-0.776 4.035-1.985 5.708-3.656
+                                0.001-0.002 0.003-0.003
+                                0.005-0.005l155.324-155.325 155.324
+                                155.325c0.002 0.001 0.004 0.003 0.006 0.004
+                                1.674 1.672 3.627 2.881 5.707 3.657 5.689
+                                2.123 12.342 0.913
+                                16.914-3.661l73.373-73.374c4.574-4.574
+                                5.785-11.227
+                                 3.662-16.915-0.776-2.080-1.985-4.034-3.657-5.707z">
+                            </path>
+                        </svg>
+                </div>
+            </div>
+        </section>
+        
+        <section class="selector-section">
+            <div id="nr-items-left">
+                <p id="count-number"></p>
+                <p id="items-left"></p>
+            </div>
+
+            <footer id="donwRow">
+                <ul id="filtering">
+                    <li><a id="allElements" class="non-selected" href="#">All</a></li>
+                    <li><a id="changeActive" class="non-selected" href="#active">Active</a></li>
+                    <li><a id="completedTodos" class="non-selected" href="#completed">Completed</a></li>
+                </ul>
+            </footer>
+            <div id="clear-completed-div">
+                <button id="clear-completed">Clear completed</button>
+            </div>
+        </section>
+    <dev class="production">
+        <p title="Produced By Wael" > <br> <br> Produced By Wael</p>
+        <p title="Help" Help-bar=" Double-click to edit a todo. 
+        " class="help">?</p>
+    </dev>
+</body>
+</html>
