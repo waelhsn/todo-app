@@ -1,24 +1,25 @@
+const form = document.querySelector("form");
 const newTodo = document.getElementById('todoList');
 const selectElement = document.querySelector(".selector-section");
-const deletetSelected = document.getElementById('clear-completed-div');
+const deleteSelected = document.getElementById('clear-completed-div');
 const allElements = document.getElementById('allElements');
 const allActive = document.getElementById('changeActive');
 const allCompleted = document.getElementById('completedTodos');
 const selectAllElements = document.getElementById('down-arrow');
-const form = document.querySelector("form");
+
 form.onsubmit = event => {
     event.preventDefault();
     const userInput = document.getElementById('inputText');
     const text = document.createTextNode(userInput.value);
-    creatingTodos(text);
+    creatingTodo(text);
     seeingSelectionSection();
     renderDownArrow();
     setOpacity();
     apparentArrow();
-
     count += 1;
     form.reset();
 }
+
 let todoElements = [];
 let count = 0;
 let checkSections = "";
@@ -43,11 +44,12 @@ selectAllElements.addEventListener("click", (event) => {
         })
         setOpacity();
     }
-    Apparentitems();
+    Apprentices();
     changeTodoText();
     deleteAllCompleted();
 });
-function creatingTodos(text) {
+
+function creatingTodo(text) {
     let clone = newTodo.cloneNode(true);
     clone.id = clone.id + count;
 
@@ -62,7 +64,7 @@ function creatingTodos(text) {
         .addEventListener("change", (event) => {
             activityToggleStatus(clone);
             setOpacity();
-            Apparentitems();
+            Apprentices();
             changeTodoText();
             deleteAllCompleted();
             filteringClone(clone);
@@ -84,10 +86,11 @@ function creatingTodos(text) {
         .addEventListener("keydown", () => {
             editTodoText(clone);
         });
-    Apparentitems();
+    Apprentices();
     deletingSvg(clone);
     filteringClone(clone);
 }
+
 function filteringClone(clone) {
     if (checkSections === "") {
         clone.style.display = "grid";
@@ -116,6 +119,7 @@ function filteringClone(clone) {
         clone.style.display = "grid";
     }
 }
+
 function seeingSelectionSection() {
     if (todoElements.length > 0)
      {
@@ -127,6 +131,7 @@ function seeingSelectionSection() {
             .className = "selector-section";
     }
 }
+
 function renderDownArrow() {
     if (document.getElementById("down-arrow") === null) {
         document.querySelector("#remarkAll")
@@ -136,17 +141,19 @@ function renderDownArrow() {
         return;
     }
 }
+
 function deleteAllCompleted()
  {
     if (todoElements.some(a => a.querySelector('input[name="checkbox-input"]')
     .checked === true)) {
-        deletetSelected.style.display = "inline";
+        deleteSelected.style.display = "inline";
     }
     else {
         //alert('You have ' + 'nothing to do.')
     }
 
 }
+
 function apparentArrow() {
     if (todoElements.length >= 1) {
         selectAllElements.style.visibility = "visible";
@@ -155,6 +162,7 @@ function apparentArrow() {
         selectAllElements.style.visibility = "hidden";
     }
 }
+
 function checkingElements() {
     let counter = 0;
 
@@ -171,28 +179,29 @@ function checkingElements() {
         return false;
     }
 }
+
 function apparentTextAndInput(clone, event) {
     let arrayOfItems = checkStatusToText(clone);
 
-    let todosText = arrayOfItems[0];
+    let todoText = arrayOfItems[0];
     let changeText = arrayOfItems[1];
 
-    todosText.hidden = true;
+    todoText.hidden = true;
     changeText.hidden = false;
     changeText.focus();
-    changeText.value = todosText.textContent;
+    changeText.value = todoText.textContent;
 }
 function editTodoText(clone) {
     let arrayOfItems = checkStatusToText(clone);
 
-    let todosText = arrayOfItems[0];
+    let todoText = arrayOfItems[0];
     let changeText = arrayOfItems[1];
 
     if (event.keyCode === 13) {
         if (changeText.value.length > 0) {
-            todosText.hidden = false;
+            todoText.hidden = false;
             changeText.hidden = true;
-            todosText.textContent = changeText.value;
+            todoText.textContent = changeText.value;
 
             clone.querySelector(".checkbox-area")
                 .classList.toggle("checkbox-area-edit");
@@ -203,12 +212,6 @@ function editTodoText(clone) {
         }
     }
 }
-//''''''''''''''''''''''''''''''''
-
-
-
-
-
 
 function activityToggleStatus(clone) {
     let cb = clone.querySelector('input[name="checkbox-input"]');
@@ -221,6 +224,7 @@ function activityToggleStatus(clone) {
         clone.querySelector(".checked").style.display = "none";
     }
 }
+
 function deletingSvg(clone) {
     clone.addEventListener("mouseover", () => {
         clone.querySelector(".removal-sign")
@@ -232,6 +236,7 @@ function deletingSvg(clone) {
             .style.visibility = "hidden";
     });
 }
+
 function setOpacity() {
     if (checkingElements() === true) {
         selectAllElements.closest("div").style.opacity = "1.0";
@@ -239,7 +244,8 @@ function setOpacity() {
         selectAllElements.closest("div").style.opacity = "0.2";
     }
 }
-function Apparentitems() {
+
+function Apprentices() {
     let numberOfItems = document.querySelector("#count-number");
     let itemsText = document.querySelector("#items-left");
     let counter = 0;
@@ -259,6 +265,7 @@ function Apparentitems() {
         itemsText.textContent = "Total Items";
     }
 }
+
 function changeTodoText() {
     todoElements.forEach(a => {
         if (a.querySelector('input[name="checkbox-input"]')
@@ -270,13 +277,15 @@ function changeTodoText() {
         }
     })
 }
+
 function removeActivity(clone) {
     clone.remove();
     todoElements = todoElements.filter(a => a.id !== clone.id);
     apparentArrow();
     deleteAllCompleted();
-    Apparentitems();
+    Apprentices();
 }
+
 function clearCompletedActivities() {
     todoElements.forEach(a => {
         if (a.querySelector('input[name="checkbox-input"]')
@@ -285,6 +294,7 @@ function clearCompletedActivities() {
         }
     })
 }
+
 //تبديل القوائم
 window.addEventListener("hashchange", () => {
     if (location.hash === "#active") {
@@ -297,6 +307,7 @@ window.addEventListener("hashchange", () => {
         onSectionClick("allElements");
     }
 });
+
 allElements.addEventListener("click", (event) => {
     location.hash = "#";
 });
@@ -309,56 +320,53 @@ allCompleted.addEventListener("click", (event) => {
     location.hash = "#completed";
 })
 
-deletetSelected.addEventListener("click", () => {
+deleteSelected.addEventListener("click", () => {
     clearCompletedActivities();
     apparentTextAndInput();
 })
-function onSectionClick(chagneSections) {
+
+function onSectionClick(changeSections) {
     todoElements.forEach(a => {
-        if (chagneSections === "completedTodos") {
+        if (changeSections === "completedTodos") {
 
             if (a.querySelector('input[name="checkbox-input"]')
                 .checked === true) {
-
                 a.style.display = "grid";
             }
             else {
                 a.style.display = "none";
             }
-
-            filteringOption = chagneSections;
+            filteringOption = changeSections;
             allElements.className = "non-selected";
             allActive.className = "non-selected";
             allCompleted.className = "selected";
         }
-
-        else if (chagneSections === "changeActive") {
+        else if (changeSections === "changeActive") {
             if (a.querySelector('input[name="checkbox-input"]')
                 .checked === true) {
 
                 a.style.display = "none";
             }
-
             else {
                 a.style.display = "grid";
             }
-            checkSections = chagneSections
+            checkSections = changeSections
             allElements.className = "non-selected";
             allActive.className = "selected";
             allCompleted.className = "non-selected";
         }
-
         else {
             todoElements.forEach(a =>
                 a.style.display = "grid");
 
-             checkSections = chagneSections
+             checkSections = changeSections
             allElements.className = "selected";
             allActive.className = "non-selected";
             allCompleted.className = "non-selected";
         }
     })
 }
+
 function checkStatusToText(clone) {
     let todosText; 
     changeTodoText(clone) ;{
